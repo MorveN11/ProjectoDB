@@ -6,8 +6,8 @@ def connection():
     connect = psycopg2.connect(
         host='postgres',
         port='5432',
-        user='manu',
-        password='Admin123',
+        user='root',
+        password='root',
         database='tottem')
     return connect
 
