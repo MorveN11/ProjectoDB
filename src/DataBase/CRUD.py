@@ -131,3 +131,93 @@ def insertHomeType(rang):
         home_type = homeTypeList[i]
         diferentiator = (i + 1) * 50
         PostgresDB.typeLiveInsert(home_type, diferentiator)
+
+
+def insertDepts():
+    PostgresDB.departamentInsert("Contabilidad", "Realiza debe y haber")
+    PostgresDB.departamentInsert("Recursos Humanos", "Control del personal")
+    PostgresDB.departamentInsert("Atencion al cliente", "Relacion con el cliente")
+    PostgresDB.departamentInsert("Limpieza", "Mantener limpio los establecimientos")
+    PostgresDB.departamentInsert("Seguridad", "Mantener seguro los establecimientos")
+    PostgresDB.departamentInsert("Direccion General", "Dirigir y manejar la empresa")
+
+
+def insertCharges():
+    PostgresDB.chargeInsert("Contador", 2100, 1)
+    PostgresDB.chargeInsert("Gerente General", 40000, 6)
+    PostgresDB.chargeInsert("Subgerente", 20000, 6)
+    PostgresDB.chargeInsert("Mantenimiento", 2500, 4)
+    PostgresDB.chargeInsert("Jefe", 3000, 5)
+    PostgresDB.chargeInsert("Cuidante", 2500, 5)
+    PostgresDB.chargeInsert("Sereno", 1800, 5)
+    PostgresDB.chargeInsert("Portero", 1800, 5)
+    PostgresDB.chargeInsert("Encargado", 10000, 6)
+    PostgresDB.chargeInsert("Secretario", 2000, 1)
+    PostgresDB.chargeInsert("Asistente", 5000, 1)
+    PostgresDB.chargeInsert("Jefe", 10000, 2)
+    PostgresDB.chargeInsert("Asistente", 5000, 2)
+    PostgresDB.chargeInsert("Analista", 7000, 2)
+    PostgresDB.chargeInsert("Asistente", 5000, 3)
+    PostgresDB.chargeInsert("Supervisor de Operaciones", 4500, 3)
+    PostgresDB.chargeInsert("Servicio al cliente", 3000, 3)
+    PostgresDB.chargeInsert("Cajero", 2200, 3)
+
+
+def insertTotalEmployes():
+    insertEmployee(5, 1)
+    insertEmployee(1, 2)
+    insertEmployee(2, 3)
+    insertEmployee(10, 4)
+    insertEmployee(1, 5)
+    insertEmployee(3, 6)
+    insertEmployee(3, 7)
+    insertEmployee(2, 8)
+    insertEmployee(1, 9)
+    insertEmployee(3, 10)
+    insertEmployee(5, 11)
+    insertEmployee(1, 12)
+    insertEmployee(3, 13)
+    insertEmployee(5, 14)
+    insertEmployee(5, 15)
+    insertEmployee(2, 16)
+    insertEmployee(4, 17)
+    insertEmployee(6, 18)
+
+
+def insertTotalServicios():
+    insertService("Agua", 20.4, "L", 5, 40000)
+    insertService("Luz", 42.7, "W", 8, 200000)
+    insertService("Gas", 38.5, "Cm3", 10, 300000)
+
+
+def insertSalary():
+    for i in range(PostgresDB.getCountTable("empleado")):
+        PostgresDB.salaryInsert(random.randint(2000, 6000), random.randint(325, 500), (i+1))
+
+
+def insertGrades():
+    for i in range(PostgresDB.getCountTable("empleado")):
+        grade = random.randint(0, 100)
+        if grade > 51:
+            PostgresDB.gradesInsert(grade, random.randint(1, 18), "Aceptado", (i+1))
+        elif grade <= 51:
+            PostgresDB.gradesInsert(grade, random.randint(1, 18), "Rechazado", (i+1))
+
+
+def insertClientService():
+    for i in range(PostgresDB.getCountTable("cliente")):
+        for j in range(random.randint(1, 3)):
+            PostgresDB.clientServiceInsert((i+1), (j+1), random.randint(1, 9999999))
+
+
+def insertEmployeePerformance():
+    for i in range(PostgresDB.getCountTable("empleado")):
+        PostgresDB.employerPerformanceInsert((i+1), random.randint(1, 10), Observations.aceptGenerate())
+
+
+def insertClientEmployer():
+    for i in range(PostgresDB.getCountTable("cliente")):
+        for j in range(random.randint(1, 5)):
+            PostgresDB.clientEmployerInsert((i+1), (j+1), random.randint(100, 3000), random.randint(1, 5),
+                                            random.randint(200, 500), Dates.contractDate(),
+                                            "Paga tus facturas a tiempo")

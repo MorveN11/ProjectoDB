@@ -4,7 +4,7 @@ import psycopg2
 
 def connection():
     connect = psycopg2.connect(
-        host='postgres',
+        host='localhost',
         port='5432',
         user='root',
         password='root',
@@ -113,7 +113,7 @@ def chargeInsert(charge, salary, departmentId):
     connect = connection()
     cursor = connect.cursor()
     sql = "INSERT INTO cargo(cargo, sueldo, id_departamento) " \
-          "VALUES(%s, %s, %s, %s)"
+          "VALUES(%s, %s, %s)"
     insert = (charge, salary, departmentId)
     commit(connect, cursor, sql, insert)
 
@@ -182,7 +182,7 @@ def salaryInsert(salary, contributionsAFPS, employerId):
 def gradesInsert(grade, chargePromoteId, result, employerId):
     connect = connection()
     cursor = connect.cursor()
-    sql = "INSERT INTO calificaciones_examen(calificacion, id_cargo_promover, resultado, id_empleado) " \
+    sql = "INSERT INTO calificaciones(calificacion, id_cargo_promover, resultado, id_empleado) " \
           "VALUES(%s, %s, %s, %s)"
     insert = (grade, chargePromoteId, result, employerId)
     commit(connect, cursor, sql, insert)
