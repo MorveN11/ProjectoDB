@@ -1,9 +1,9 @@
---linux debian
+##linux debian
 sudo docker-compose up -d
 
 
---Ingresa al navegador preferido e ingresar la direccion: 127.0.0.1
-correo: admin@admin.com
+###Ingresa al navegador preferido e ingresar la direccion: 127.0.0.1
+correo: admin@admin.com \n
 contraseña: admin
 
 postgres
